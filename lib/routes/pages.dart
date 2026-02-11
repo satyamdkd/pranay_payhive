@@ -31,6 +31,8 @@ import 'package:payhive/modules/recharge_and_bill_pay/fastag/binding/fastag_bind
 import 'package:payhive/modules/recharge_and_bill_pay/gas/binding/gas_binding.dart';
 import 'package:payhive/modules/recharge_and_bill_pay/gas/view/gas_all_billers.dart';
 import 'package:payhive/modules/reverify_aadhar/view/reverify_aadhar_view.dart';
+import 'package:payhive/modules/reverify_pan/binding/reverify_pan_binding.dart';
+import 'package:payhive/modules/reverify_pan/view/reverify_pan_view.dart';
 import 'package:payhive/modules/shop_lincence/binding/shop_licence_binding.dart';
 import 'package:payhive/modules/shop_lincence/view/shop_licence_detail.dart';
 import 'package:payhive/modules/splash/binding/splash_binding.dart';
@@ -201,6 +203,12 @@ class AppPages {
       name: _Paths.reverifyAadhaar,
       page: () => ReverifyAadharView(),
       binding: ReverifyAadharBinding(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: _Paths.reverifyPan,
+      page: () => ReverifyPanView(),
+      binding: ReverifyPanBinding(),
       transition: Transition.leftToRight,
     ),
   ];

@@ -27,6 +27,7 @@ abstract class Routes {
   static const transactionDetailWithStatusPage =
       _Paths.transactionDetailWithStatusPage;
   static const reverifyAadhaar = _Paths.reverifyAadhaar;
+  static const reverifyPan = _Paths.reverifyPan;
 }
 
 abstract class _Paths {
@@ -56,4 +57,5 @@ abstract class _Paths {
   static const transactionDetailWithStatusPage =
       '/transactionDetailWithStatusPage';
   static const reverifyAadhaar = '/reverify-aadhar';
+  static const reverifyPan = '/reverify-pan';
 }

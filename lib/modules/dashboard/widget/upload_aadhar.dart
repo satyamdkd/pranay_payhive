@@ -105,7 +105,12 @@ void showDocumentUploadDialog() {
                         //   }
                         // });
 
-                        Get.toNamed(Routes.reverifyAadhaar);
+                        ScaffoldMessenger.of(Get.context!).clearSnackBars();
+                        Get.toNamed(Routes.reverifyAadhaar)!.then((v) async {
+                          await dashController.dashboardApi();
+
+                          dashController.update();
+                        });
                       },
                     ),
 
