@@ -1,0 +1,2 @@
+/Users/user/Desktop/Satyam/fintech/pranay/payhive/android/app/.cxx/Debug/c1j454r5/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/user/Desktop/Satyam/fintech/pranay/payhive/android/app/.cxx/Debug/c1j454r5/arm64-v8a/CMakeFiles/rebuild_cache.dir

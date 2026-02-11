@@ -1,0 +1,2 @@
+/Users/user/Desktop/Satyam/fintech/payhive/android/app/.cxx/RelWithDebInfo/5758q711/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/user/Desktop/Satyam/fintech/payhive/android/app/.cxx/RelWithDebInfo/5758q711/arm64-v8a/CMakeFiles/rebuild_cache.dir

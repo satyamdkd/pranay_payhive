@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "146019286352",
+    "project_id": "paylix-6f12a",
+    "storage_bucket": "paylix-6f12a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146019286352:android:3ec2115fbcd1f17eaec055",
+        "android_client_info": {
+          "package_name": "com.pay.hivee.payhive"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtv4kkl7Stbi52CocOJ0TWF8IPR8ksQSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
