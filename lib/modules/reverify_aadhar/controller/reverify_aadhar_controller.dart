@@ -12,6 +12,9 @@ class ReverifyAadharController extends GetxController {
   TextEditingController document = TextEditingController();
   File? file;
 
+  Map<String, dynamic>? aadharDetails;
+  String aadharBase64Image = '';
+
   @override
   void onInit() {
     super.onInit();

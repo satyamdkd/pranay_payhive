@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:payhive/modules/auth/salary/widgets/aadhar_field.dart';
 import 'package:payhive/modules/pos/view/view_doc.dart';
 import 'package:payhive/utils/helper/form_validation.dart';
+import 'package:payhive/utils/widgets/snackbar.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../../utils/screen_size.dart';
@@ -142,13 +143,13 @@ class ReverifyAadharView extends GetView<ReverifyAadharController> {
                         //     (controller.aadharDetails.runtimeType == Null ||
                         //         controller.aadharDetails == null))
                         //   otpAndSpacing(),
-                        // if (controller.aadharDetails.runtimeType != Null &&
-                        //     controller.aadharDetails != null)
-                        //   Padding(
-                        //     padding:
-                        //         const EdgeInsets.symmetric(horizontal: 12.0),
-                        //     child: aadharDetails(context),
-                        //   ),
+                        if (controller.aadharDetails.runtimeType != Null &&
+                            controller.aadharDetails != null)
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: aadharDetails(context),
+                          ),
                         spacer(),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -205,9 +206,201 @@ class ReverifyAadharView extends GetView<ReverifyAadharController> {
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: aadharTextField(
         controller: controller.aadhaarTextController,
+        suffixIcon: controller.aadharDetails != null
+            ? Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: height / 30,
+                  horizontal: width / 30,
+                ),
+                child: Image.asset(
+                  "assets/icons/successmark.png",
+                  height: height / 18,
+                ),
+              )
+            : null,
         onChanged: (val) {
           controller.update();
         },
+      ),
+    );
+  }
+
+  SizedBox aadharDetails(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height / 1.7,
+      width: width,
+      child: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: width / 20, right: width / 20),
+            child: Column(
+              children: [
+                spacing(passedHeight: height / 20),
+                Image.asset(
+                  "assets/icons/successmark.png",
+                  height: height / 12,
+                ),
+                spacing(passedHeight: height / 90),
+                Text(
+                  "Aadhar Verified",
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    color: appColors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: height / 24,
+                  ),
+                ),
+                spacing(passedHeight: height / 20),
+                spacing(passedHeight: height / 20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 3.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      /// if (controller.aadharImageBytes != null)
+                      ///   Image.memory(
+                      ///     controller.aadharImageBytes!,
+                      ///     fit: BoxFit.contain,
+                      ///     height: height / 8,
+                      ///   ),
+
+                      if (controller.aadharBase64Image != '')
+                        Image.network(
+                          controller.aadharBase64Image,
+                          fit: BoxFit.contain,
+                          height: height / 8,
+                        ),
+                      if (controller.aadharBase64Image != '')
+                        SizedBox(width: width / 30),
+                      SizedBox(
+                        width: width / 2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Name",
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                color: appColors.black.withOpacity(0.6),
+                                fontWeight: FontWeight.w200,
+                                fontSize: height / 26,
+                              ),
+                            ),
+                            Text(
+                              controller.aadharDetails!['name'] ?? '',
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                color: appColors.black.withOpacity(0.8),
+                                fontWeight: FontWeight.w500,
+                                fontSize: height / 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                spacing(passedHeight: height / 20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 3.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: width / 3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Gender",
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                color: appColors.black.withOpacity(0.6),
+                                fontWeight: FontWeight.w200,
+                                fontSize: height / 26,
+                              ),
+                            ),
+                            Text(
+                              controller.aadharDetails!['gender'] == 'M'
+                                  ? 'Male'
+                                  : 'Female',
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                color: appColors.black.withOpacity(0.8),
+                                fontWeight: FontWeight.w500,
+                                fontSize: height / 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: width / 3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Date Of Birth",
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                color: appColors.black.withOpacity(0.6),
+                                fontWeight: FontWeight.w200,
+                                fontSize: height / 26,
+                              ),
+                            ),
+                            Text(
+                              controller.aadharDetails!['dateOfBirth'] ?? '',
+                              style: theme.textTheme.headlineSmall?.copyWith(
+                                color: appColors.black.withOpacity(0.8),
+                                fontWeight: FontWeight.w500,
+                                fontSize: height / 24,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                spacing(passedHeight: height / 20),
+                if (controller.aadharDetails!['address'] != null &&
+                    controller.aadharDetails!['address'].toString().trim() !=
+                        '')
+                  Padding(
+                    padding: const EdgeInsets.only(left: 3.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: width / 1.5,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Address",
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  color: appColors.black.withOpacity(0.6),
+                                  fontWeight: FontWeight.w200,
+                                  fontSize: height / 26,
+                                ),
+                              ),
+                              Text(
+                                controller.aadharDetails!['address'] ?? '',
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  color: appColors.black.withOpacity(0.8),
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: height / 24,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

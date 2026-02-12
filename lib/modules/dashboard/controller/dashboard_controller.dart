@@ -203,11 +203,13 @@ class DashBoardController extends GetxController {
         isPosAssigned.value = response.data['data']['posassignuser'];
         isPanUploaded.value = response.data['data']['ispanupload'];
         isAadharUploaded.value = response.data['data']['isaadharupload'];
-        isProfilePicApproved.value = response.data['data']['profile_status'] ?? 'approve';
+        isProfilePicApproved.value =
+            response.data['data']['profile_status'] ?? 'approve';
+
         /// isProfilePicApproved.value = response.data['data']['profile_status'];
         isBusinessPhotoUploaded.value =
             response.data['data']['isbussinessupload'];
-        accountType.value = response.data['data']['account_type'];
+        accountType.value = response.data['data']['account_type'] ?? '';
         isBankUploaded.value = response.data['data']['isbankupload'];
         walletAmount.value = response.data['data']['userwallet'].toString();
         marginPerTransaction =
@@ -221,7 +223,6 @@ class DashBoardController extends GetxController {
         //     isProfilePicApproved.value != 'approve') {
         //   showDocumentUploadDialog();
         // }
-
 
         if (isPanUploaded.value ||
             !isAadharUploaded.value ||

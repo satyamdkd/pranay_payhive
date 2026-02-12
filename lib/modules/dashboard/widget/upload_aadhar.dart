@@ -105,6 +105,7 @@ void showDocumentUploadDialog() {
                         //   }
                         // });
 
+                        Get.back();
                         ScaffoldMessenger.of(Get.context!).clearSnackBars();
                         Get.toNamed(Routes.reverifyAadhaar)!.then((v) async {
                           await dashController.dashboardApi();
@@ -123,32 +124,40 @@ void showDocumentUploadDialog() {
                       subtitle: 'Clear photo required',
                       isUploaded: dashController.isPanUploaded.value,
                       onTap: () async {
-                        final File? file = await pickImage();
-                        if (file == null) return;
+                        // final File? file = await pickImage();
+                        // if (file == null) return;
 
-                        showLoader();
+                        // showLoader();
 
-                        final result = await uploadDoc(
-                          type: "pan",
-                          document: file,
-                        );
+                        // final result = await uploadDoc(
+                        //   type: "pan",
+                        //   document: file,
+                        // );
+                        // Get.back();
+
+                        // await Future.delayed(const Duration(seconds: 1),
+                        //     () async {
+                        //   await dashController.dashboardApi();
+
+                        //   dashController.update();
+
+                        //   if (result is ApiSuccess) {
+                        //     if (dashController.isPanUploaded.value &&
+                        //         dashController.isAadharUploaded.value) {
+                        //       Get.back();
+                        //       Get.back();
+                        //     }
+                        //   } else {
+                        //     Get.snackbar('Error', 'Upload failed');
+                        //   }
+                        // });
+
                         Get.back();
-
-                        await Future.delayed(const Duration(seconds: 1),
-                            () async {
+                        ScaffoldMessenger.of(Get.context!).clearSnackBars();
+                        Get.toNamed(Routes.reverifyPan)!.then((v) async {
                           await dashController.dashboardApi();
 
                           dashController.update();
-
-                          if (result is ApiSuccess) {
-                            if (dashController.isPanUploaded.value &&
-                                dashController.isAadharUploaded.value) {
-                              Get.back();
-                              Get.back();
-                            }
-                          } else {
-                            Get.snackbar('Error', 'Upload failed');
-                          }
                         });
                       },
                     ),
